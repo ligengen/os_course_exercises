@@ -5,7 +5,7 @@
 
 - 完成lec2的视频学习
 - git pull ucore_os_lab, os_tutorial_lab, os_course_exercises  in github repos。这样可以在本机上完成课堂练习。
-- 了解代码段，数据段，执行文件，执行文件格式，堆，栈，控制流，函数调用,函数参数传递，用户态（用户模式），内核态（内核模式）等基本概念。思考一下这些基本概念在linux, ucore, v9-cpu中是如何具体体现的。
+- 了解代码段，数据段，执行文件，执行文件格式，堆，栈，控制流，函数调用,函数参数传递，用户态（用户模式），内核态（内核模式）等基本概念。思考一下这些基本概念在不同操作系统（如linux, ucore,etc.)与不同硬件（如 x86, riscv, v9-cpu,etc.)中是如何相互配合来体现的。
 - 安装好ucore实验环境，能够编译运行ucore labs中的源码。
 - 会使用linux中的shell命令:objdump，nm，file, strace，gdb等，了解这些命令的用途。
 - 会编译，运行，使用v9-cpu的dis,xc, xem命令（包括启动参数），阅读v9-cpu中的v9\-computer.md文档，了解汇编指令的类型和含义等，了解v9-cpu的细节。
@@ -132,12 +132,12 @@ switch_to:                      # switch_to(from, to)
 
   处理复杂的数据结构可以用宏，比如课堂上的例子。to_struct函数表示可以用宏进行数据类型转换。le2page宏可以通过结构体变量开头的地址访问这个变量。
 
-
 ## 问答题
 
 #### 在配置实验环境时，你遇到了那些问题，是如何解决的。
 
   环境出现了问题，解决方法是询问同学，make clean重装一遍。。
+
 
 ## 参考资料
  - [Intel格式和AT&T格式汇编区别](http://www.cnblogs.com/hdk1993/p/4820353.html)
