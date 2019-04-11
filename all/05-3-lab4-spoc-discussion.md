@@ -12,7 +12,7 @@
 
 2. ucore的线程控制块数据结构是什么？
 
- > 在ucore中只有一个PCB数据结构，进程和线程都使用这一个数据结构；
+ > 在ucore中只有一个PCB数据结构，进程和线程都使用这一个数据结构```proc_struct```
 
 ### 13.2 关键数据结构
 
@@ -21,6 +21,20 @@
  > 寄存器状态、堆栈、当前指令指针等信息是线程控制块的；
  
  > mm, vma等内存管理字段是进程控制块的；
+
+ * state: 进程的状态
+ * pid: 进程id
+ * runs: 进程的运行次数
+ * kstack: 内核栈
+ * need_resched: 需要被重新调度
+ * parent: 父进程
+ * mm: 内存管理
+ * context: 进程的上下文，切换时都在内核态
+ * tf: 当前中断的trap frame，用户态和内核态在这个结构里进行切换
+ * cr3: PDT的存储单元
+ * flags: flag
+ * name: name
+ * list_link, hash_link: 将进程串起来的数据结构
 
 1. 如何知道ucore的两个线程同在一个进程？
 
@@ -32,7 +46,7 @@
 
 1. 用户态或内核态下的中断处理有什么区别？在trapframe中有什么体现？
 
- > 在用户态中断响应时，要切换到内核态；而在内核态中断响应时，没有这种切换；
+ > 在用户态中断响应时，要切换到内核态；而在内核态中断响应时，没有这种切换，切换到内核态的时候需要将用户态的ss和esp保存到内核态的栈中
  
  > tf_esp, tf_ss字段
 
@@ -45,8 +59,10 @@
 ### 13.3 执行流程
 
 1. kernel_thread创建的内核线程执行的第一条指令是什么？它是如何过渡到内核线程对应的函数的？
+ 
+ * 指令：do_fork(clone_flags | CLONE_VM, 0, &tf);
 
- > tf.tf_eip = (uint32_t) kernel_thread_entry;
+ > tf.tf_eip = (uint32_t) kernel_thread_entry;指明了下一条指令的地址
 
  > /kern-ucore/arch/i386/init/entry.S
 
