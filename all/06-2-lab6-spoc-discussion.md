@@ -1,4 +1,4 @@
-# lec16: lab6 spoc 思考题
+# lab6 spoc 思考题
 
 - 有"spoc"标记的题是要求拿清华学分的同学在实体课上完成的，对于学堂在线的选课同学是可选题目。
 
@@ -119,5 +119,4 @@
 > 需写练习报告和简单编码，完成后放到git server 对应的git repo中
 
 ### 练习用的[lab6 spoc exercise project source code](https://github.com/chyyuu/ucore_lab/tree/master/labcodes_answer/lab6_result)
-
 
